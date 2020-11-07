@@ -1,6 +1,6 @@
 <template>
   <div class="blogsComponent">
-    <blogComponent v-for="blog in blogs" :key="blog" :blog-prop="blog" class="my-5 shadow-lg p-2" />
+    <blogComponent v-for="blog in blogs" :key="blog" :blog-prop="blog" class="radius-25 my-4 shadow-lg p-3 bg-light" />
   </div>
 </template>
 
@@ -19,6 +19,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-
+<style lang="css" scoped>
+.radius-25 {
+  border-radius: 25px;
+}
 </style>

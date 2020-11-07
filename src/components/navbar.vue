@@ -24,6 +24,10 @@
           <router-link :to="{ name: 'Home' }" class="nav-link">
             Home
           </router-link>
+
+          <router-link :to="{ name: 'CreateBlog' }" class="nav-link">
+            Create
+          </router-link>
         </li>
       </ul>
       <span class="navbar-text">

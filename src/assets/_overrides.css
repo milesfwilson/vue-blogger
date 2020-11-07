@@ -2,6 +2,10 @@
   height: 45px;
   width: 45px;
   position: absolute;
-  left: -70px;
-  top: 15px;
+  left: -80px;
+  top: 5px;
+}
+
+.radius-25 {
+  border-radius: 25px;
 }

@@ -1,10 +1,10 @@
 <template>
-  <div class="blogComponent row">
+  <div class="blogComponent row bg-light" v-if="blogProp.title">
     <div class="col-12">
       <div class="row">
         <div class="col-12 d-flex">
-          <div>
-            <img :src="blogProp.creator.picture" class="rounded-circle img-fluid tiny" alt="">
+          <div v-if="blogProp.creator">
+            <img :src="blogProp.creator.picture" class="rounded-circle img-fluid tiny shadow" alt="">
             <p>{{ blogProp.creator.name }}</p>
           </div>
           <h4 class="ml-auto">
@@ -14,9 +14,14 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <p>
+          <p class="pb-3">
             {{ blogProp.body }}
           </p>
+          <router-link :to="{name: 'ActiveBlog', params: {blogId: blogProp.id}}" class=" text-dark">
+            <h6 class="text-right">
+              Read Full Post
+            </h6>
+          </router-link>
         </div>
       </div>
     </div>
