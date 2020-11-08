@@ -7,13 +7,19 @@
         <h3 class="text-center">
           Create Post
         </h3>
-        <div class="d-flex justify-content-around">
-          <form class="" @submit.prevent="createBlog">
-            <input type="text" class="border-0 bg-light" placeholder="Add comment" v-model="state.newBlog.title">
-            <input type="text" class="border-0 bg-light" placeholder="Add comment" v-model="state.newBlog.body">
-            <input type="checkbox" class="border-0 bg-light" placeholder="Add comment" v-model="state.newBlog.published">
+        <div class="">
+          <form class="form-group" @submit.prevent="createBlog">
+            <label for="">Title</label>
+            <input type="text" class="form-control" placeholder="Title" v-model="state.newBlog.title">
+            <label class="mt-3" for="">Blog Content</label>
+
+            <input type="text" class="form-control" placeholder="Content" v-model="state.newBlog.body">
+
+            <label class="mt-3" for="">Visible to all?</label>
+            <input type="checkbox" class="ml-3" placeholder="" v-model="state.newBlog.published">
+
             <button class="btn bg-transparent" type="submit">
-              +
+              Publish
             </button>
           </form>
         </div>
