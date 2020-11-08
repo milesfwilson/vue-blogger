@@ -18,6 +18,27 @@ class CommentService {
     try {
       const res = await api.post('/comments/', newComment)
       AppState.comments.push(res.data)
+      this.getComments(blogId)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  async deleteComment(id, blog) {
+    try {
+      const res = await api.delete('/comments/' + id)
+      this.getComments(blog)
+      console.log(res)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  async editComment(id, blog, newComment) {
+    try {
+      const res = await api.put('/comments/' + id, newComment)
+      console.log(res)
+      this.getComments(blog)
     } catch (error) {
       console.error(error)
     }

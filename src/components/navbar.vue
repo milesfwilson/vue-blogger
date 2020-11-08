@@ -19,20 +19,19 @@
       <span class="navbar-toggler-icon" />
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <router-link :to="{ name: 'Home' }" class="nav-link">
-            Home
-          </router-link>
+      <div class="d-flex">
+        <router-link :to="{ name: 'CreateBlog' }" class="nav-link text-light" v-if="profile.id">
+          Create
+        </router-link>
 
-          <router-link :to="{ name: 'CreateBlog' }" class="nav-link">
-            Create
-          </router-link>
-        </li>
-      </ul>
-      <span class="navbar-text">
+        <router-link :to="{name: 'Profile'}" class="nav-link text-light" v-if="profile.id">
+          Profile
+        </router-link>
+      </div>
+
+      <span class="navbar-text ml-auto">
         <button
-          class="btn btn-success"
+          class="btn bg-transparent text-light"
           @click="login"
           v-if="!user.isAuthenticated"
         >
@@ -41,22 +40,28 @@
 
         <div class="dropdown" v-else>
           <div
-            class="btn btn-light dropdown-toggle"
+            class="btn bg-transparent dropdown-toggle"
             @click="state.dropOpen = !state.dropOpen"
           >
             <img
               :src="user.picture"
               alt="user photo"
               height="40"
-              class="rounded"
+              class="rounded-circle"
             />
-            <span class="mx-3">{{ user.name }}</span>
+
           </div>
           <div
             class="dropdown-menu p-0 list-group w-100"
             :class="{ show: state.dropOpen }"
             @click="state.dropOpen = false"
           >
+            <router-link :to="{ name: 'CreateBlog' }">
+              <div class="list-group-item list-group-item-action hoverable">
+                Create
+              </div>
+            </router-link>
+
             <router-link :to="{ name: 'Profile' }">
               <div class="list-group-item list-group-item-action hoverable">
                 Profile
@@ -66,7 +71,7 @@
               class="list-group-item list-group-item-action hoverable"
               @click="logout"
             >
-              logout
+              Logout
             </div>
           </div>
         </div>
@@ -88,6 +93,7 @@ export default {
     return {
       state,
       user: computed(() => AppState.user),
+      profile: computed(() => AppState.profile),
       async login() {
         AuthService.loginWithPopup()
       },
