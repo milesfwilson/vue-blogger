@@ -1,7 +1,7 @@
 <template>
   <div class="editBlogComponent">
     <button type="button" class="btn bg-transparent border-0" data-toggle="modal" data-target="#modelId">
-      e
+      <i class="far fa-edit text-dark"></i>
     </button>
 
     <div class="modal fade"
@@ -22,22 +22,21 @@
             </button>
           </div>
           <div class="modal-body">
-            <form class="" @submit.prevent="editBlog(blogProp.id)">
-              <input type="text" class="border-0 bg-light" :placeholder="blogProp.title" v-model="state.newBlog.title">
-              <input type="text" class="border-0 bg-light" :placeholder="blogProp.body" v-model="state.newBlog.body">
-              <input type="checkbox" class="border-0 bg-light" v-model="state.newBlog.published">
-              <button class="btn bg-transparent" type="submit">
-                +
-              </button>
+            <form class="form-group" @submit.prevent="editBlog(blogProp.id)">
+              <input type="text" class="form-control my-2" :placeholder="blogProp.title" v-model="state.newBlog.title">
+              <input type="text" class="form-control my-2" :placeholder="blogProp.body" v-model="state.newBlog.body">
+              <div class="d-flex justify-content-center">
+                <i class="fas fa-eye text-dark"></i>
+                <input type="checkbox" class="ml-3" v-model="state.newBlog.published">
+              </div>
+              <div class="d-flex justify-content-end">
+                <button class="btn bg-transparent" type="submit">
+                  <i class="fas fa-paper-plane text-dark"></i>
+                </button>
+              </div>
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">
-              Close
-            </button>
-            <button type="button" class="btn btn-primary">
-              Save
-            </button>
           </div>
         </div>
       </div>

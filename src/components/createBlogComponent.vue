@@ -3,24 +3,29 @@
     <div class="row">
       <div class="col-2"></div>
 
-      <div class="col-8">
-        <h3 class="text-center">
+      <div class="col-8 box-border p-5 shadow-lg">
+        <h3 class="text-center box-border p-2 text-light bg-dark">
           Create Post
         </h3>
         <div class="">
           <form class="form-group" @submit.prevent="createBlog">
             <label for="">Title</label>
-            <input type="text" class="form-control" placeholder="Title" v-model="state.newBlog.title">
+            <input type="text" class="form-control box-border" placeholder="Title" v-model="state.newBlog.title" required>
             <label class="mt-3" for="">Blog Content</label>
 
-            <input type="text" class="form-control" placeholder="Content" v-model="state.newBlog.body">
+            <input type="text" class="form-control box-border" placeholder="Content" v-model="state.newBlog.body" required>
 
-            <label class="mt-3" for="">Visible to all?</label>
-            <input type="checkbox" class="ml-3" placeholder="" v-model="state.newBlog.published">
+            <div class="d-flex justify-content-center mt-3">
+              <i class="fas fa-eye text-dark"></i>
 
-            <button class="btn bg-transparent" type="submit">
-              Publish
-            </button>
+              <input type="checkbox" class="ml-3" placeholder="" v-model="state.newBlog.published">
+            </div>
+
+            <div class="d-flex justify-content-end">
+              <button class="btn bg-transparent" type="submit">
+                <i class="fas fa-paper-plane fa-2x text-dark"></i>
+              </button>
+            </div>
           </form>
         </div>
       </div>
@@ -52,6 +57,12 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="css" scoped>
+.taller {
+  height: 100px;
+}
+.box-border {
+  border: 1px solid black;
+}
 
 </style>

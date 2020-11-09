@@ -9,3 +9,7 @@
 .radius-25 {
   border-radius: 25px;
 }
+
+p {
+  font-family: 'Roboto', sans-serif;
+}

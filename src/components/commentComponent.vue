@@ -1,9 +1,10 @@
 <template>
   <div class="commentComponent">
     <div v-if="commentProp.creator && commentProp.creator.id != profile.id">
-      <div class=" col-12 pr-5">
+      <div class=" col-12">
         <div class="row">
-          <div class="col-12 shadow bg-light radius-25 py-2">
+          <div class="col-12 grow shadow bg-light radius-25 py-2 d-flex">
+            <img :src="commentProp.creator.picture" class="small rounded-circle" alt="">
             <p class="pl-2 my-auto">
               {{ commentProp.body }}
             </p>
@@ -13,13 +14,14 @@
     </div>
 
     <div v-else>
-      <div class="col-12 shadow bg-dark text-light radius-25 ml-5 py-2" data-toggle="collapse" :data-target="'#collapse'+commentProp.id">
+      <div class="col-12 shadow bg-dark text-light radius-25 ml-5 py-2 grow" data-toggle="collapse" :data-target="'#collapse'+commentProp.id">
         <div class="row">
           <div class="col-12">
             <div class="d-flex justify-content-end">
-              <p class="my-auto">
+              <p class="my-auto pr-2">
                 {{ commentProp.body }}
               </p>
+              <img :src="commentProp.creator.picture" class="small rounded-circle" alt="">
             </div>
           </div>
         </div>
@@ -30,10 +32,10 @@
               <div class="d-flex" v-if="commentProp.creator">
                 <div v-if="commentProp.creator.id == profile.id">
                   <button class="btn bg-transparent border-0 text-light" data-toggle="modal" :data-target="'#modal'+commentProp.id" type="button">
-                    e
+                    <i class="far fa-edit text-light"></i>
                   </button>
                   <button class="btn bg-transparent border-0 text-light" @click="deleteComment(commentProp.id, commentProp.blog)">
-                    x
+                    <i class="fas fa-trash text-light"></i>
                   </button>
                 </div>
               </div>
@@ -64,17 +66,14 @@
             </button>
           </div>
           <div class="modal-body">
-            <form @submit.prevent="editComment(commentProp.id, commentProp.blog)">
-              <input type="text" v-model="state.newComment.body" :placeholder="commentProp.body">
-              <button type="submit" class="btn btn-primary">
-                Save
-              </button>
+            <form class="form-group" @submit.prevent="editComment(commentProp.id, commentProp.blog)">
+              <input class="form-control mb-2" type="text" v-model="state.newComment.body" :placeholder="commentProp.body">
+              <div class="d-flex justify-content-end">
+                <button type="submit" class="btn bg-transparent">
+                  <i class="fas fa-paper-plane text-dark"></i>
+                </button>
+              </div>
             </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">
-              Close
-            </button>
           </div>
         </div>
       </div>
@@ -116,4 +115,14 @@ export default {
 .radius-25 {
   border-radius: 25px;
 }
+
+.grow:hover {
+  transform: scale(1.01);
+  transition: all .25s ease-in-out;
+  }
+
+.small {
+  height: 30px;
+}
+
 </style>

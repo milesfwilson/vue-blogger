@@ -1,19 +1,18 @@
 <template>
-  <div class="about text-center container-fluid">
-    <div class="row">
-      <div class="col-8 offset-2 d-flex justify-content-center">
-        <div class="d-flex mt-5">
-          <img class="rounded-circle img-fluid shadow-lg mr-3" :src="profile.picture" alt="" />
+  <div class="about container-fluid">
+    <div class="row my-3">
+      <div class="col-3 offset-1 d-flex">
+        <img class="rounded-circle img-fluid" :src="profile.picture" alt="" />
 
-          <h1 class=" my-auto bg-dark text-light">
-            Profile
-          </h1>
-        </div>
+        <h4 class="text-dark bg-light shadow-lg my-auto ml-2 box-border p-2">
+          {{ profile.name }}
+        </h4>
       </div>
+      <div class="col-8"></div>
     </div>
     <div class="row">
       <div class="col-8 offset-2">
-        <div class="row pt-5">
+        <div class="row">
           <myBlogsComponent v-for="blog in blogs" :key="blog.id" :blog-prop="blog" />
         </div>
       </div>
@@ -47,6 +46,12 @@ export default {
 
 <style scoped>
 img {
-  max-width: 100px;
+  max-width: 125px;
+
+}
+
+.box-border {
+
+  border-radius: 25px;
 }
 </style>

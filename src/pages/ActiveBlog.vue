@@ -4,14 +4,14 @@
       <div class="col-8 offset-2 bg-light shadow-lg py-2 radius-25">
         <div class="row">
           <div class="col-12 d-flex justify-content-between">
-            <h3 class="p-3">
+            <h2 class="p-3">
               {{ blog.title }}
-            </h3>
+            </h2>
             <div v-if="blog.creator">
               <div class="d-flex" v-if="blog.creator.id == profile.id">
                 <editBlogComponent :blog-prop="blog" />
                 <button class="btn bg-transparent border-0" @click="deleteBlog">
-                  x
+                  <i class="fas fa-trash text-dark"></i>
                 </button>
               </div>
             </div>
@@ -20,27 +20,16 @@
 
         <div class="row">
           <div class="col-12">
-            <div class="move d-flex">
-              <img :src="blog.creator.picture" height="220" class="rounded-circle" alt="" v-if="blog.creator">
-              <p class="ml-5">
+            <div class="d-flex move">
+              <img :src="blog.creator.picture" height="200" class="rounded-circle shadow-lg" alt="" v-if="blog.creator">
+              <p class="pl-4 m-auto">
                 {{ blog.body }}
               </p>
-            </div>
-
-            <div class="collapse" id="contentId">
-              <div class="d-flex justify-content-center">
-                <form class="" @submit.prevent="createComment">
-                  <input type="text" class="border-0 bg-light" placeholder="Add comment" v-model="state.newComment.body">
-                  <button class="btn bg-transparent" type="submit">
-                    +
-                  </button>
-                </form>
-              </div>
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-12 d-flex justify-content-end">
+          <div class="col-12 d-flex justify-content-end move-right">
             <button class="btn bg-transparent"
                     type="button"
                     data-toggle="collapse"
@@ -48,13 +37,28 @@
                     aria-expanded="false"
                     aria-controls="contentId"
             >
-              Comment
+              <i class="fas fa-pencil-alt text-dark fa-2x"></i>
             </button>
           </div>
         </div>
       </div>
     </div>
-    <div class="row pt-3">
+
+    <div class="row pt-2">
+      <div class="col-8 offset-2">
+        <div class="collapse" id="contentId">
+          <div class="d-flex justify-content-center">
+            <form class="" @submit.prevent="createComment">
+              <input type="text" class="radius-25 p-2 shadow bg-light text-dark wide" placeholder="Add comment" v-model="state.newComment.body" required>
+              <button class="btn bg-transparent" type="submit">
+                <i class="fas fa-paper-plane text-dark"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row pt-2">
       <div class="col-8 offset-2">
         <commentComponent v-for="comment in comments" :key="comment.id" :comment-prop="comment" class="my-2" />
       </div>
@@ -112,6 +116,15 @@ export default {
 .move {
   position: relative;
   top: 0px;
-  left: -175px;
+  left: -100px;
+}
+
+.move-right {
+  position: relative;
+  left: 80px;
+}
+
+.wide {
+  width: 400px;
 }
 </style>

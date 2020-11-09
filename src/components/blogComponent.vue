@@ -5,11 +5,11 @@
         <div class="col-12 d-flex">
           <div v-if="blogProp.creator">
             <img :src="blogProp.creator.picture" class="rounded-circle img-fluid tiny shadow" alt="">
-            <p>{{ blogProp.creator.name }}</p>
+            <h6>{{ blogProp.creator.name }}</h6>
           </div>
-          <h4 class="ml-auto">
+          <h3 class="ml-auto">
             {{ blogProp.title }}
-          </h4>
+          </h3>
         </div>
       </div>
       <div class="row">

@@ -1,6 +1,6 @@
 <template>
   <div class="blogsComponent">
-    <blogComponent v-for="blog in blogs" :key="blog" :blog-prop="blog" class="radius-25 my-4 shadow-lg p-3 bg-light" />
+    <blogComponent v-for="blog in blogs" :key="blog" :blog-prop="blog" class="radius-25 my-4 shadow-lg p-3 bg-light grow" />
   </div>
 </template>
 
@@ -23,4 +23,9 @@ export default {
 .radius-25 {
   border-radius: 25px;
 }
+.grow:hover {
+  transform: scale(1.01);
+  transition: all .25s ease-in-out;
+  }
+
 </style>
